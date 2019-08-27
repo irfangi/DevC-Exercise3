@@ -2,10 +2,41 @@
 <html lang="en">
 <head>
     <title>Exercise 3</title>
+    <style>
+    body{
+        font-size: 1em;
+    }
+    table{
+        border-collapse: collapse;
+    }
+    td, th{
+        padding: 16px;
+    }
+    .m-t{
+        margin-top: 16px;
+    }
+    input{
+        width: 400px;
+        height: 32px;
+        font-size: 1em;
+        margin-left: 16px;
+    }
+    </style>
 </head>
 <body>
     <h1>Daftar Planet</h1>
-    <table border="1" id="outputTable">
+    Search Planet
+    <input type="text" placeholder="Type Name" oninput="search()" id="search">
+    <table border="1" class="m-t" id="outputTable">
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Orbit</th>
+            <th>Gravity</th>
+            <th>Population</th>
+            <th>Diameter</th>
+            <th>Surface_water</th>
+        </tr>
     </table>
 </body>
 <script>
@@ -230,11 +261,71 @@
             "url": "https://swapi.co/api/planets/11/"
         }
     ];
+
+    function search() {
+        var keySearch = document.getElementById("search").value;
+        var results = [];        
+        for(var i=0; i<data.length; i++) {            
+            if(data[i]['name'].indexOf(keySearch)!==-1) {
+                results.push(data[i]);
+            }
+        }
+        
+        
+
+        // results.forEach((item, index)=>{
+        //     var row = table.insertRow(index+1);
+        //     var col1 = row.insertCell(0);
+        //     var col2 = row.insertCell(1);
+        //     var col3 = row.insertCell(2);
+        //     var col4 = row.insertCell(3);
+        //     var col5 = row.insertCell(4);
+        //     var col6 = row.insertCell(5);
+        //     var col7 = row.insertCell(6);
+            
+        //     var name = item.name;
+        //     var orbit = item.orbital_period;
+        //     var gravity = item.gravity;
+        //     var population = item.population;
+        //     var diameter = item.diameter;
+        //     var surface_water = item.surface_water;
+
+        //     col1.innerHTML = index +1;
+        //     col2.innerHTML = name;
+        //     col3.innerHTML = orbit;
+        //     col4.innerHTML = gravity;
+        //     col5.innerHTML = population;
+        //     col6.innerHTML = diameter;
+        //     col7.innerHTML = surface_water;
+        // });
+    }
+
+    var table = document.getElementById('outputTable');
     
     data.forEach((item, index)=>{
-        console.log(item);
-        
-        document.getElementById('outputTable');
+       var row = table.insertRow(index+1);
+       var col1 = row.insertCell(0);
+       var col2 = row.insertCell(1);
+       var col3 = row.insertCell(2);
+       var col4 = row.insertCell(3);
+       var col5 = row.insertCell(4);
+       var col6 = row.insertCell(5);
+       var col7 = row.insertCell(6);
+       
+       var name = item.name;
+       var orbit = item.orbital_period;
+       var gravity = item.gravity;
+       var population = item.population;
+       var diameter = item.diameter;
+       var surface_water = item.surface_water;
+
+       col1.innerHTML = index +1;
+       col2.innerHTML = name;
+       col3.innerHTML = orbit;
+       col4.innerHTML = gravity;
+       col5.innerHTML = population;
+       col6.innerHTML = diameter;
+       col7.innerHTML = surface_water;
     });
 </script>
 </html>
