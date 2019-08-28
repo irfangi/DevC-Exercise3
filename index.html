@@ -262,44 +262,6 @@
         }
     ];
 
-    function search() {
-        var keySearch = document.getElementById("search").value;
-        var results = [];        
-        for(var i=0; i<data.length; i++) {            
-            if(data[i]['name'].indexOf(keySearch)!==-1) {
-                results.push(data[i]);
-            }
-        }
-        
-        
-
-        // results.forEach((item, index)=>{
-        //     var row = table.insertRow(index+1);
-        //     var col1 = row.insertCell(0);
-        //     var col2 = row.insertCell(1);
-        //     var col3 = row.insertCell(2);
-        //     var col4 = row.insertCell(3);
-        //     var col5 = row.insertCell(4);
-        //     var col6 = row.insertCell(5);
-        //     var col7 = row.insertCell(6);
-            
-        //     var name = item.name;
-        //     var orbit = item.orbital_period;
-        //     var gravity = item.gravity;
-        //     var population = item.population;
-        //     var diameter = item.diameter;
-        //     var surface_water = item.surface_water;
-
-        //     col1.innerHTML = index +1;
-        //     col2.innerHTML = name;
-        //     col3.innerHTML = orbit;
-        //     col4.innerHTML = gravity;
-        //     col5.innerHTML = population;
-        //     col6.innerHTML = diameter;
-        //     col7.innerHTML = surface_water;
-        // });
-    }
-
     var table = document.getElementById('outputTable');
     
     data.forEach((item, index)=>{
@@ -327,5 +289,42 @@
        col6.innerHTML = diameter;
        col7.innerHTML = surface_water;
     });
+
+    function search() {
+        var keySearch = document.getElementById("search").value;
+        var results = [];        
+        for(var i=0; i<data.length; i++) {            
+            if(data[i]['name'].indexOf(keySearch)!==-1) {
+                results.push(data[i]);
+            }
+        }
+        table.innerHTML = "<tr><th>No</th><th>Name</th><th>Orbit</th><th>Gravity</th><th>Population</th><th>Diameter</th><th>Surface_water</th></tr>";
+        results.forEach((item, index)=>{
+            var row = table.insertRow(index+1);
+            var col1 = row.insertCell(0);
+            var col2 = row.insertCell(1);
+            var col3 = row.insertCell(2);
+            var col4 = row.insertCell(3);
+            var col5 = row.insertCell(4);
+            var col6 = row.insertCell(5);
+            var col7 = row.insertCell(6);
+            
+            var name = item.name;
+            var orbit = item.orbital_period;
+            var gravity = item.gravity;
+            var population = item.population;
+            var diameter = item.diameter;
+            var surface_water = item.surface_water;
+
+            col1.innerHTML = index +1;
+            col2.innerHTML = name;
+            col3.innerHTML = orbit;
+            col4.innerHTML = gravity;
+            col5.innerHTML = population;
+            col6.innerHTML = diameter;
+            col7.innerHTML = surface_water;
+        });
+    }
+
 </script>
 </html>
